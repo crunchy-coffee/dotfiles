@@ -1,0 +1,37 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+# User specific environment
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+export PATH
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+if [ -d ~/.bashrc.d ]; then
+    for rc in ~/.bashrc.d/*; do
+        if [ -f "$rc" ]; then
+            . "$rc"
+        fi
+    done
+fi
+unset rc
+
+# This configures eza to display icons by default. Eza is a ls replacement.
+export EZA_ICONS_AUTO="true"
+
+# ble.sh is a prerequisite of using Atuin with Bash.
+source ~/.local/share/blesh/ble.sh
+
+# This starts atuin, which provides better shell history.
+eval "$(atuin init bash)"
+
+# This starts the starship prompt. This should probably always be the last thing that is initialized.
+eval "$(starship init bash)"
