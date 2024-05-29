@@ -1,0 +1,18 @@
+format = """$all\
+┌─ $directory\
+$git_branch\
+$git_status\
+$git_state\
+$time\
+\n└─ $character"""
+
+add_newline = false
+
+[fill]
+symbol = " "
+
+[time]
+disabled = false
+time_format = "%r" # hour:minute with 12h format
+format = '[󰅐 $time]($style)'
+use_12hr = true
