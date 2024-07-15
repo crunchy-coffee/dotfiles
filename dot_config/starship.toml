@@ -1,5 +1,6 @@
 format = """$all\
-┌─ $directory\
+┌─ $container\
+$directory\
 $git_branch\
 $git_status\
 $git_state\
