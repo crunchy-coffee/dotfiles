@@ -4,6 +4,10 @@ Set-PSReadLineKeyHandler -Chord Tab -Function MenuComplete
 #region Import Modules
 $psgalleryRepo = Get-PSRepository | Where-Object {$_.Name -eq 'PSGallery'}
 
+<#
+    posh-git        adds autocompletion for git
+    Terminal-Icons  adds glyphs for files and folders in the terminal
+#>
 $Modules = @(
     "posh-git",
     "Terminal-Icons"
@@ -21,6 +25,8 @@ if ($psgalleryRepo.InstallationPolicy -ne 'Trusted') {
 function Import-ModuleList {
     [CmdletBinding()]
     param (
+        # List of modules that should be imported.
+        [Parameter(Mandatory)]
         [string[]]$Modules
     )
     
