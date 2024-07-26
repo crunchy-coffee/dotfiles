@@ -50,6 +50,17 @@ function Import-ModuleList {
 Import-ModuleList -Modules $Modules
 #endRegion
 
+#region Custom Functions
+function Get-PublicIP {
+    (Invoke-WebRequest -Uri http://ifconfig.me/ip).Content    
+}
+
+function Get-EnvironmentVariables {
+    Get-ChildItem -Path Env:/ | Sort-Object -Property Name
+}
+
+#endRegion
+
 if (Get-Command -Name "starship" -ErrorAction SilentlyContinue) {
     # This starts up starship for prompt customization.
     Invoke-Expression (&starship init powershell)
