@@ -50,10 +50,13 @@
         "list": 
         [
             {
+                "colorScheme": "Campbell Powershell",
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "cursorShape": "vintage",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
-                "name": "Windows PowerShell"
+                "name": "Windows PowerShell",
+                "opacity": 50
             },
             {
                 "commandline": "%SystemRoot%\\System32\\cmd.exe",
@@ -68,9 +71,11 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
+                "cursorShape": "vintage",
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell",
+                "opacity": 50,
                 "source": "Windows.Terminal.PowershellCore"
             }
         ]
