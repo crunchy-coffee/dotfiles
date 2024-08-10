@@ -48,12 +48,15 @@ function Import-ModuleList {
 }
 
 Import-ModuleList -Modules $Modules
+
 #endRegion
 
 #region PowerShell Completions
 
-# chezmoi command completion
-$chezmoiCompletion = "$HOME/.config/powershell/completions/chezmoi.ps1"
+# chezmoi command tab completion
+# Using $ENV:USERPROFILE because it doesn't exist in the Linux pwsh version, and therefore won't load this tab completion.
+# I typically use pwsh within a containerized environment on Linux, where chezmoi is not likely setup.
+$chezmoiCompletion = "$ENV:USERPROFILE/.config/powershell/completions/chezmoi.ps1"
 if ($chezmoiCompletion) {
     . $chezmoiCompletion
 }
@@ -62,7 +65,7 @@ if ($chezmoiCompletion) {
 # tab-completions to function for `choco`.
 # Be aware that if you are missing these lines from your profile, tab completion
 # for `choco` will not function.
-# See https://ch0.co/tab-completion for details.
+# See https://docs.chocolatey.org/en-us/troubleshooting/#why-does-choco-tab-not-work-for-me
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
     Import-Module "$ChocolateyProfile"
