@@ -50,6 +50,16 @@ function Import-ModuleList {
 Import-ModuleList -Modules $Modules
 #endRegion
 
+#region PowerShell Completions
+
+# chezmoi command completion
+$chezmoiCompletion = "$HOME/.config/powershell/completions/chezmoi.ps1"
+if ($chezmoiCompletion) {
+    . $chezmoiCompletion
+}
+
+#endRegion
+
 #region Custom Functions
 function Get-PublicIP {
     (Invoke-WebRequest -Uri http://ifconfig.me/ip).Content    
