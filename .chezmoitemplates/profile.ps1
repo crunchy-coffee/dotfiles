@@ -57,7 +57,7 @@ Import-ModuleList -Modules $Modules
 # Using $ENV:USERPROFILE because it doesn't exist in the Linux pwsh version, and therefore won't load this tab completion.
 # I typically use pwsh within a containerized environment on Linux, where chezmoi is not likely setup.
 $chezmoiCompletion = "$ENV:USERPROFILE/.config/powershell/completions/chezmoi.ps1"
-if ($chezmoiCompletion) {
+if (Test-Path($chezmoiCompletion)) {
     . $chezmoiCompletion
 }
 
