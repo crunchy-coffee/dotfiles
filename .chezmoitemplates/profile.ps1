@@ -71,6 +71,13 @@ if (Test-Path($ChocolateyProfile)) {
     Import-Module "$ChocolateyProfile"
 }
 
+# Python pip command completions
+# See https://pip.pypa.io/en/stable/user_guide/#command-completion
+$pipCompletion = "$HOME/.config/powershell/completions/pip.ps1"
+if (Test-Path($pipCompletion)) {
+    . $pipCompletion
+}
+
 #endRegion
 
 #region Custom Functions
