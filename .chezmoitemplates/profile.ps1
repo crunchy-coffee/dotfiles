@@ -57,7 +57,7 @@ Import-ModuleList -Modules $Modules
 # Using $ENV:USERPROFILE because it doesn't exist in the Linux pwsh version, and therefore won't load this tab completion.
 # I typically use pwsh within a containerized environment on Linux, where chezmoi is not likely setup.
 $chezmoiCompletion = "$ENV:USERPROFILE/.config/powershell/completions/chezmoi.ps1"
-if (Test-Path($chezmoiCompletion)) {
+if (Test-Path -Path $chezmoiCompletion) {
     . $chezmoiCompletion
 }
 
@@ -71,10 +71,16 @@ if (Test-Path($ChocolateyProfile)) {
     Import-Module "$ChocolateyProfile"
 }
 
+# gsudo autocompletion. This tests for the path it would be in if installed via Chocolatey. Other install methods are likely different.
+$gsudoCompletion = "$ENV:SystemDrive\tools\gsudo\Current\gsudoModule.psd1"
+if (Test-Path -Path $gsudoCompletion) {
+    Import-Module -Name gsudoModule 
+}
+
 # Python pip command completions
 # See https://pip.pypa.io/en/stable/user_guide/#command-completion
 $pipCompletion = "$HOME/.config/powershell/completions/pip.ps1"
-if (Test-Path($pipCompletion)) {
+if (Test-Path -Path $pipCompletion) {
     . $pipCompletion
 }
 
