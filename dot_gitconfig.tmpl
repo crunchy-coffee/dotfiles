@@ -3,4 +3,5 @@
 	email = {{ .email | quote }}
 {{ if eq .chezmoi.os "windows" }}[core]
 	sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
-{{ end }}
+{{ end }}[safe]
+	directory = {{ .chezmoi.sourceDir }}
